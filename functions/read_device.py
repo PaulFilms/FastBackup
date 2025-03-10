@@ -13,7 +13,7 @@ Aquí tienes un código que detecta el pendrive y lista sus archivos:
 ```
 import os
 import psutil
-from pathlib import Path
+
 
 def get_usb_drive():
     """Detecta la letra de la unidad USB en Windows."""
@@ -63,19 +63,7 @@ def get_usb_drive():
             return partition.mountpoint  # Devuelve la letra de la unidad
     return None
 
-def list_files_in_usb():
-    """Lista todos los archivos en el pendrive."""
-    usb_drive = get_usb_drive()
-    if not usb_drive:
-        print("No se detectó ninguna unidad USB.")
-        return
 
-    print(f"Unidad USB detectada: {usb_drive}")
-    usb_path = Path(usb_drive)
-
-    # Listar archivos de manera recursiva
-    for file in usb_path.rglob("*"):  # Recorrer archivos y carpetas
-        print(file)
 
 def get_drive_serial(drive_letter):
     """Obtiene el número de serie del volumen usando WMIC."""
@@ -113,6 +101,7 @@ def get_drive_label(drive_letter):
 '''
 
 from win32api import GetVolumeInformation
+from pathlib import Path
 from dataclasses import dataclass
 
 from psutil import disk_partitions
@@ -154,3 +143,13 @@ def get_mounted_drives() -> list[HDD]:
             )
         )
     return hdd_list
+
+def list_files_in_usb(drive: str):
+    """Lista todos los archivos en el pendrive."""
+
+    print(f"Unidad USB detectada: {drive}")
+    usb_path = Path(drive)
+
+    # Listar archivos de manera recursiva
+    for file in usb_path.rglob("*"):  # Recorrer archivos y carpetas
+        print(file)

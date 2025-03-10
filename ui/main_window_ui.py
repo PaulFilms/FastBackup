@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'main_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.8.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -65,24 +65,24 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout = QGridLayout(self.frame)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.treeWidget = QTreeWidget(self.frame)
-        QTreeWidgetItem(self.treeWidget)
-        self.treeWidget.setObjectName(u"treeWidget")
+        self.tr_source = QTreeWidget(self.frame)
+        QTreeWidgetItem(self.tr_source)
+        self.tr_source.setObjectName(u"tr_source")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.treeWidget.sizePolicy().hasHeightForWidth())
-        self.treeWidget.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.tr_source.sizePolicy().hasHeightForWidth())
+        self.tr_source.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.treeWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.tr_source, 0, 0, 1, 1)
 
-        self.treeWidget_2 = QTreeWidget(self.frame)
-        QTreeWidgetItem(self.treeWidget_2)
-        self.treeWidget_2.setObjectName(u"treeWidget_2")
-        sizePolicy.setHeightForWidth(self.treeWidget_2.sizePolicy().hasHeightForWidth())
-        self.treeWidget_2.setSizePolicy(sizePolicy)
+        self.tr_destiny = QTreeWidget(self.frame)
+        QTreeWidgetItem(self.tr_destiny)
+        self.tr_destiny.setObjectName(u"tr_destiny")
+        sizePolicy.setHeightForWidth(self.tr_destiny.sizePolicy().hasHeightForWidth())
+        self.tr_destiny.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.treeWidget_2, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.tr_destiny, 0, 1, 1, 1)
 
 
         self.gridLayout_2.addWidget(self.frame, 2, 0, 1, 2)
@@ -115,26 +115,26 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"FAST BACKUP", None))
         self.btn_source_upload.setText(QCoreApplication.translate("MainWindow", u"UPDATE", None))
         self.btn_destiny_find.setText(QCoreApplication.translate("MainWindow", u"FIND", None))
-        ___qtreewidgetitem = self.treeWidget.headerItem()
+        ___qtreewidgetitem = self.tr_source.headerItem()
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"Size", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Extension", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Col 1", None));
 
-        __sortingEnabled = self.treeWidget.isSortingEnabled()
-        self.treeWidget.setSortingEnabled(False)
-        ___qtreewidgetitem1 = self.treeWidget.topLevelItem(0)
+        __sortingEnabled = self.tr_source.isSortingEnabled()
+        self.tr_source.setSortingEnabled(False)
+        ___qtreewidgetitem1 = self.tr_source.topLevelItem(0)
         ___qtreewidgetitem1.setText(0, QCoreApplication.translate("MainWindow", u"file.exe", None));
-        self.treeWidget.setSortingEnabled(__sortingEnabled)
+        self.tr_source.setSortingEnabled(__sortingEnabled)
 
-        ___qtreewidgetitem2 = self.treeWidget_2.headerItem()
+        ___qtreewidgetitem2 = self.tr_destiny.headerItem()
         ___qtreewidgetitem2.setText(1, QCoreApplication.translate("MainWindow", u"Extension", None));
         ___qtreewidgetitem2.setText(0, QCoreApplication.translate("MainWindow", u"Col 1", None));
 
-        __sortingEnabled1 = self.treeWidget_2.isSortingEnabled()
-        self.treeWidget_2.setSortingEnabled(False)
-        ___qtreewidgetitem3 = self.treeWidget_2.topLevelItem(0)
+        __sortingEnabled1 = self.tr_destiny.isSortingEnabled()
+        self.tr_destiny.setSortingEnabled(False)
+        ___qtreewidgetitem3 = self.tr_destiny.topLevelItem(0)
         ___qtreewidgetitem3.setText(0, QCoreApplication.translate("MainWindow", u"file.exe", None));
-        self.treeWidget_2.setSortingEnabled(__sortingEnabled1)
+        self.tr_destiny.setSortingEnabled(__sortingEnabled1)
 
         self.btn_sync.setText(QCoreApplication.translate("MainWindow", u"SYNC", None))
     # retranslateUi
