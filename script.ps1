@@ -12,8 +12,10 @@ if (Test-Path "$VENV_DIR/Scripts/Activate.ps1") {
     Write-Host "✅ Activando entorno virtual..."
     & "$VENV_DIR/Scripts/Activate.ps1"
 } else {
-    Write-Host "❌ Error: No se encontró el entorno virtual '$VENV_DIR'"
-    exit 1
+    # Write-Host "❌ Error: No se encontró el entorno virtual '$VENV_DIR'"
+    # exit 1
+    py -m venv .venv
+    "$VENV_DIR/Scripts/Activate.ps1"
 }
 
 # # Crear el directorio de salida si no existe

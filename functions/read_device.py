@@ -45,7 +45,7 @@ psutil.disk_partitions() obtiene todas las unidades montadas y filtra las que so
 Se obtiene la letra de la unidad USB automáticamente.
 Path(usb_drive).rglob("*") lista todos los archivos y carpetas recursivamente.
 Si tienes varios pendrives conectados, el código detectará el primero que encuentre. Si necesitas manejar múltiples dispositivos, podemos modificarlo para listar todos. 🚀
-'''
+
 
 import os, subprocess
 from psutil import disk_partitions
@@ -56,10 +56,10 @@ def get_usb_drive():
     partitions = disk_partitions()
     for partition in partitions:
         if 'removable' in partition.opts:  # Identifica unidades extraíbles
-            print(partition.opts)
-            print(partition.mountpoint)
-            serial = get_drive_serial(partition.mountpoint)
-            print(serial)
+            # print(partition.opts)
+            # print(partition.mountpoint)
+            # serial = get_drive_serial(partition.mountpoint)
+            # print(serial)
             return partition.mountpoint  # Devuelve la letra de la unidad
     return None
 
@@ -107,5 +107,50 @@ def get_drive_label(drive_letter):
 # serial = get_drive_serial("D:")
 # print(serial)
 
-serial = get_drive_label("D:")
-print(serial)
+# serial = get_drive_label("D:")
+# print(serial)'
+
+'''
+
+from win32api import GetVolumeInformation
+from dataclasses import dataclass
+
+from psutil import disk_partitions
+
+@dataclass
+class HDD:
+    label: str
+    fstype: str
+    removable: bool
+    re_writable: bool
+    letter: str = None
+
+
+def get_mounted_drives() -> list[HDD]:
+    # system = os.name
+    # if system == "nt": # Windows
+    #     drives = [os.path.splitdrive(p.mountpoint)[0] for p in disk_partitions(all=True)]
+    # else: # macOS/Linux
+    #     drives = [p.mountpoint for p in disk_partitions(all=True)]
+    hdd_list = list()
+    for partition in disk_partitions(all=True):
+        # print(partition)
+        # cmd = f'wmic logicaldisk where "DeviceID=\'{drive}\'" get VolumeName /value'
+        # result = subprocess.check_output(cmd, shell=True, text=True).strip()
+        # label = result.split('=')[-1].strip() if '=' in result else None
+        # print(label)
+        # cmd = f'wmic logicaldisk where "DeviceID=\'{drive}\'" get VolumeSerialNumber /value'
+        # result = subprocess.check_output(cmd, shell=True, text=True).strip()
+        # serial = result.split('=')[-1].strip() if '=' in result else None
+        # print(serial)
+        fromwin32 = GetVolumeInformation(partition.mountpoint) # (label: str, int, int, int, format: str = 'NTFS')
+        hdd_list.append(
+            HDD(
+                label=fromwin32[0],
+                fstype=partition.fstype,
+                removable='removable' in partition.opts,
+                re_writable='rw' in partition.opts,
+                letter=partition.mountpoint
+            )
+        )
+    return hdd_list
