@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# PyInstaller & PyArmor
+build
+dist
+*.lic
+.pyarmor
+
 # Jupyter Notebook
 .ipynb_checkpoints
 
